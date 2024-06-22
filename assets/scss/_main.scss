@@ -1,0 +1,195 @@
+// slide-intro
+.slide-intro {
+    position: relative;
+    .swiper-slide {
+        position: relative;
+        &.swiper-slide-active {
+            .slide-txt {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+    }
+    .slide-txt {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        opacity: 0;
+        transition: all 0.8s;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        color: $white;
+        span {
+            padding: 3px 10px;
+            font-size: 0.875rem;
+            background: $primary-50;
+        }
+        strong {
+            display: block;
+            margin: 10px 0 15px;
+            font-size: 2.3rem;
+            line-height: 1.2;
+        }
+    }
+    .swiper-button-pause {
+        display: none;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 10;
+        background: #000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    picture {
+        position: relative;
+        width: 100%;
+        // picture::after {}
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+    }
+    img {
+        // height: calc(100vh - $hdH);
+        height: 100vh;
+    }
+
+    // arrow
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: auto;
+        left: 50%;
+        bottom: 90px;
+        &:hover {
+            &::before {
+                color: $secondary-50;
+            }
+        }
+        &::before {
+            font-family: 'Line Awesome Free';
+            font-weight: 900;
+            font-size: 3rem;
+        }
+        &::after {
+            display: none;
+        }
+    }
+    .swiper-button-prev {
+        transform: translateX(-635px);
+        &::before {
+            content: '\f060';
+        }
+    }
+    .swiper-button-next {
+        transform: translateX(-570px);
+        &::before {
+            content: '\f061';
+        }
+    }
+    // pagination
+    .swiper-pagination {
+        width: 70px;
+        top: auto;
+        left: 50%;
+        bottom: 86px;
+        transform: translateX(-500px);
+        color: $white;
+        font-size: 1.2rem;
+        span {
+            font-weight: bold;
+        }
+    }
+}
+@media screen and (min-width: $breakpoint-xl) {
+    .slide-intro {
+        .swiper-button-pause {
+            display: block;
+        }
+        .slide-txt {
+            width: 100%;
+            text-align: left;
+            span {
+                font-size: 1.2rem;
+            }
+            strong {
+                margin-bottom: 30px;
+                font-size: 4rem;
+            }
+            p {
+                font-size: 1.5rem;
+            }
+        }
+        img {
+            height: 820px;
+        }
+    }
+}
+
+// main
+.sec-eft {
+    overflow: hidden;
+}
+.slide-eft {
+    position: relative;
+    .swiper {
+        overflow: visible;
+        width: 85%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .swiper-slide {
+        height: 400px;
+        background: $gray-5;
+        border-radius: 20px;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        @include flexCenter;
+        width: 80px;
+        height: 80px;
+        margin: 0;
+        background: rgba($primary, 0.5);
+        transform: translateY(-50%);
+        &::after {
+            transform: scale(0.8);
+        }
+    }
+    .swiper-button-prev {
+        left: -100px;
+    }
+    .swiper-button-next {
+        right: -100px;
+    }
+
+    // .swiper-button-prev {
+    //     @include flexCenter;
+    //     left: -100px;
+    //     width: 80px;
+    //     height: 80px;
+    //     margin: 0;
+    //     border-radius: 50%;
+    //     background: rgba($gray-300, 0.5);
+    // }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+    .slide-eft .swiper {
+        width: 95%;
+    }
+}
+@media screen and (min-width: $breakpoint-xl) {
+    .slide-eft .swiper {
+        width: 100%;
+    }
+}
